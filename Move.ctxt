@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Move
-comment0.text=\n\ Write\ a\ description\ of\ class\ Move\ here.\n\n\ @author\ (Quinton\ McCollum)\n\ @version\ (v1.0)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Move\ here.\r\n\r\n\ @author\ (Quinton\ McCollum)\r\n\ @version\ (v1.0)\r\n
 comment1.params=n\ t\ tv\ d\ u
 comment1.target=Move(java.lang.String,\ java.lang.String,\ java.lang.String[],\ int,\ int)
 comment10.params=

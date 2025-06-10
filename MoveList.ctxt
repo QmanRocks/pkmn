@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MoveList
-comment0.text=\n\ Write\ a\ description\ of\ class\ MoveList\ here.\n\n\ @author\ (Quinton\ McCollum)\n\ @version\ (v1.0)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ MoveList\ here.\r\n\r\n\ @author\ (Quinton\ McCollum)\r\n\ @version\ (v1.0)\r\n
 comment1.params=i
 comment1.target=Move\ get(int)
 numComments=2

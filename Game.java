@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 public class Game
 {
+    
+    //bleeeeeh
     public static final Scanner console = new Scanner(System.in);
     public static Player player = new Player("Player", new ArrayList<Pokemon>(), new ArrayList<Item>());
     public static int route = 0;
