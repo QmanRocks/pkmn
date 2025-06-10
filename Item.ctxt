@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Item
+comment0.text=\n\ Write\ a\ description\ of\ class\ Item\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=i
+comment1.target=Item(int)
+comment2.params=p
+comment2.target=boolean\ use(Pokemon)
+comment3.params=
+comment3.target=int\ getType()
+comment4.params=
+comment4.target=java.lang.String\ getName()
+comment5.params=
+comment5.target=java.lang.String\ getDesc()
+numComments=6

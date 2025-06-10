@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Player
+comment1.params=n\ p\ b
+comment1.target=Player(java.lang.String,\ java.util.ArrayList,\ java.util.ArrayList)
+comment2.params=
+comment2.target=java.util.ArrayList\ getBackpack()
+comment3.params=
+comment3.target=int\ getMoney()
+comment4.params=i
+comment4.target=void\ addItem(Item)
+comment5.params=m
+comment5.target=void\ addMoney(int)
+comment6.params=i
+comment6.target=void\ removeItem(int)
+comment7.params=m
+comment7.target=void\ spendMoney(int)
+comment8.params=
+comment8.target=java.lang.String\ toString()
+numComments=9

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=TrainerList
+comment1.params=i
+comment1.target=Trainer\ get(int)
+comment2.params=p1
+comment2.target=java.util.ArrayList\ fillPk(int[])
+comment3.params=p1\ p2
+comment3.target=java.util.ArrayList\ fillPk(int[],\ int[])
+comment4.params=p1\ p2\ p3
+comment4.target=java.util.ArrayList\ fillPk(int[],\ int[],\ int[])
+comment5.params=p1\ p2\ p3\ p4
+comment5.target=java.util.ArrayList\ fillPk(int[],\ int[],\ int[],\ int[])
+numComments=6

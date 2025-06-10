@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=PokemonList
+comment1.params=i
+comment1.target=Pokemon\ get(int)
+comment2.params=i
+comment2.target=java.util.ArrayList\ fillMoves(int)
+comment3.params=i\ j
+comment3.target=java.util.ArrayList\ fillMoves(int,\ int)
+comment4.params=i\ j\ k
+comment4.target=java.util.ArrayList\ fillMoves(int,\ int,\ int)
+comment5.params=i\ j\ k\ l
+comment5.target=java.util.ArrayList\ fillMoves(int,\ int,\ int,\ int)
+numComments=6
