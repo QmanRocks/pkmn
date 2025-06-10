@@ -12,7 +12,6 @@ import java.util.Arrays;
 public class Game
 {
     
-    //bleeeeeh
     public static final Scanner console = new Scanner(System.in);
     public static Player player = new Player("Player", new ArrayList<Pokemon>(), new ArrayList<Item>());
     public static int route = 0;
@@ -109,11 +108,12 @@ public class Game
                 
                 System.out.println("Choose a move (type number): ");
                 System.out.println("Name \t\tType");
-                int count = 1;
+                int count = 0;
                 for(Move m : pl.getMoves())
                 {
-                    System.out.println(count + ") " + m);
                     count++;
+                    System.out.println(count + ") " + m);
+                    
                 }
                 moveChoice = retryInput(1, count)-1;
                 
@@ -137,11 +137,12 @@ public class Game
                 else
                 {
                     System.out.println("Choose an item:");
-                    int count = 1;
+                    int count = 0;
                     for(Item i : p.getBackpack())
                     {
-                        System.out.println(count + ")" + i.getName());
                         count++;
+                        System.out.println(count + ")" + i.getName());
+                        
                     }
                     int iChoice = retryInput(1, count)-1;
 
@@ -151,11 +152,12 @@ public class Game
                     {
                         //Potions
                         System.out.println("Choose a Pokemon to heal: ");
-                        int pCount = 1;
+                        int pCount = 0;
                         for(Pokemon pk : p.getPokemon())
                         {
-                            System.out.println(pCount + ") " + pk);
                             pCount++;
+                            System.out.println(pCount + ") " + pk);
+                            
                         }
                         int pChoice = retryInput(1, pCount)-1;
                         
@@ -168,13 +170,13 @@ public class Game
                     {
                         //Revive
                         System.out.println("Choose a Pokemon to Revive: ");
-                        int pCount = 1;
+                        int pCount = 0;
                         for(Pokemon pk : p.getKOPokemon())
                         {
-                            System.out.println(pCount + ")" + pk);
                             pCount++;
+                            System.out.println(pCount + ")" + pk);
                         }
-                        int pChoice = retryInput(0, pCount-1)-1;
+                        int pChoice = retryInput(1, pCount)-1;
                         
                         clearBattle(pl, op);
                         i.use(p.getKOPokemon().get(pChoice));
@@ -225,14 +227,15 @@ public class Game
                 {
                     int curInd = p.getPokemon().indexOf(pl);
                     System.out.println("Choose a Pokemon to take "+pl.getName()+"'s place!");
-                    int count = 1;
+                    int count = 0;
                     for(Pokemon pk : p.getPokemon())
                     {
+                        count++;
                         if(count - 1 == curInd)
                             System.out.print("Current: ");
                         
                         System.out.println(count + ")" + pk);
-                        count++;
+                        
                     }
                     int newChoice = retryInput(1, p.getPokemon().size(), curInd+1)-1;
                     
@@ -328,11 +331,12 @@ public class Game
             if(!pl.isAwake() && p.getPokemon().size() > 0)
             {
                 System.out.println("Choose a Pokemon to take "+pl.getName()+"'s place!");
-                int count = 1;
+                int count = 0;
                 for(Pokemon pk : p.getPokemon())
                 {
-                    System.out.println(count + ")" + pk);
                     count++;
+                    System.out.println(count + ")" + pk);
+                    
                 }
                 int newChoice = retryInput(1, p.getPokemon().size())-1;
                 
@@ -558,7 +562,7 @@ public class Game
             newPInd = p.getEvIndex();
         }
         
-        Pokemon newP = new Pokemon(PokemonList.get(newPInd));
+        Pokemon newP = new Pokemon(PokemonList.get(newPInd), p.getLevel());
         System.out.println("Hm? "+p.getName()+" is evolving!");
         wait(1000);
         for(int i = 0; i < 2; i++)
@@ -569,7 +573,7 @@ public class Game
         System.out.println(p.getName() + " evolved into "+newP.getName()+"!");
         
         nick(newP);
-        newP.setLevel(p.getLevel());
+
         player.setPokemon(player.getPokemon().indexOf(p), newP);
         clear();
     }
@@ -808,25 +812,28 @@ public class Game
     {
         //Get Choices
         clear();
-        int count = 1;
+        System.out.println("Choose the first Pokemon to switch: ");
+        int count = 0;
         for(Pokemon p : player.getPokemon())
         {
-            System.out.println(count + ")" + p);
             count++;
+            System.out.println(count + ")" + p);
+            
         }
-        System.out.println("Choose the first Pokemon to switch: ");
         int choice1 = retryInput(1,count)-1;
+        
         clear();
         System.out.println("Choose the second Pokemon to switch with the first");
-        count = 1;
+        count = 0;
         for(Pokemon p : player.getPokemon())
         {
+            count++;
             if(count == choice1+1)
             {
                 System.out.print(">");
             }
             System.out.println(count + ")" + p);
-            count++;
+            
         }
         int choice2 = retryInput(1,count)-1;
         
@@ -838,11 +845,11 @@ public class Game
         clear();
         System.out.println("Successfully switched Pokemon!");
         
-        count = 1;
+        count = 0;
         for(Pokemon p : player.getPokemon())
         {
-            System.out.println(count + ")" + p);
             count++;
+            System.out.println(count + ")" + p);
         }
         wait(1500);
     }
@@ -852,26 +859,30 @@ public class Game
         int choice = -2;
         while(choice < -1)
         {
-            int count = 1;
+            int count = 0;
             System.out.println("Choose a Pokemon to release:");
             for(Pokemon p : player.getPokemon())
             {
-                System.out.println(count + ")" + p);
                 count++;
+                System.out.println(count + ")" + p);
+                
             }
             System.out.println("0)Cancel");
             choice = retryInput(0,count)-1;
-            System.out.println("Are you sure you want to release "+player.getPokemon().get(choice).getName()+"?");
-            System.out.println("(Y)/(N)");
-            String yn = retryInput();
-            if(yn.equals("N"))
+            if(choice > 0)
             {
-                choice = -2;
-            }
-            else
-            {
-                player.removePokemon(choice);
-                System.out.println("Released the Pokemon. Goodbye "+player.getPokemon().get(choice).getName()+"!");
+                System.out.println("Are you sure you want to release "+player.getPokemon().get(choice).getName()+"?");
+                System.out.println("(Y)/(N)");
+                String yn = retryInput();
+                if(yn.equals("N"))
+                {
+                    choice = -2;
+                }
+                else
+                {
+                    player.removePokemon(choice);
+                    System.out.println("Released the Pokemon. Goodbye "+player.getPokemon().get(choice).getName()+"!");
+                }
             }
         }
     }

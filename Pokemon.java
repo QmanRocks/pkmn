@@ -234,7 +234,7 @@ public class Pokemon
         
         System.out.print(name + " gained ");
         if(lvUp)
-            System.out.print(xp);
+            System.out.print(xp + " extra ");
         else
             System.out.print(x);
         System.out.println(" XP");

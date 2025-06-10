@@ -49,28 +49,28 @@ public class PokemonList
         
         //fire
         new Pokemon("Flareon", "Fire", fillMoves(1,2,5,6), 65, 35, 16, -1, true),//7
-        new Pokemon("Charmander", "Fire", fillMoves(0,5), 65, 25, 12, 9, true),//8
+        new Pokemon("Charmander", "Fire", fillMoves(0,5), 65, 25, 12, 9, false),//8
         new Pokemon("Charmeleon", "Fire", fillMoves(0,1,5), 80, 40, 14, 10, true),//9
         new Pokemon("Charizard", "Fire", fillMoves(0,1,5,6), 100, 55, 20, -1, true),//10
-        new Pokemon("Scorbunny", "Fire", fillMoves(1,5), 69, 30, 12, 12, true),//11
+        new Pokemon("Scorbunny", "Fire", fillMoves(1,5), 69, 30, 12, 12, false),//11
         new Pokemon("Raboot", "Fire", fillMoves(1,2,5), 94, 40, 14, 13, true),//12
         new Pokemon("Cinderace", "Fire", fillMoves(1,2,5,37), 119, 50, 20, -1, true),//13
         
         //grass
-        new Pokemon("Bulbasaur", "Grass", fillMoves(0,13), 45, 25, 12, 15, true),//14
+        new Pokemon("Bulbasaur", "Grass", fillMoves(0,13), 45, 25, 12, 15, false),//14
         new Pokemon("Ivysaur", "Grass", fillMoves(0,1,13), 60, 40, 15, 16, true),//15
         new Pokemon("Venusaur", "Grass", fillMoves(0,1,13,14), 80, 55, 18, -1, true),//16
-        new Pokemon("Oddish", "Grass", fillMoves(0), 30, 20, 10, 18, true),//17
+        new Pokemon("Oddish", "Grass", fillMoves(0), 30, 20, 10, 18, false),//17
         new Pokemon("Gloom", "Grass", fillMoves(0,13), 40, 30, 14, 19, true),//18
         new Pokemon("Vileplume", "Grass", fillMoves(0,13,17), 50, 45, 18, -1, true),//19
         new Pokemon("Leafeon", "Grass", fillMoves(0,1,2,14), 65, 35, 16, -1, true),//20
         
         //water
         new Pokemon("Vaporeon", "Water", fillMoves(0,1,2,4), 65, 35, 16, -1, true),//21
-        new Pokemon("Squirtle", "Water", fillMoves(0,3), 43, 25, 12, 23, true),//22
+        new Pokemon("Squirtle", "Water", fillMoves(0,3), 43, 25, 12, 23, false),//22
         new Pokemon("Wartortle", "Water", fillMoves(0,1,3), 58, 40, 15, 24, true),//23
         new Pokemon("Blastoise", "Water", fillMoves(0,1,3,4), 78, 55, 20, -1, true),//24
-        new Pokemon("Tentacool", "Water", fillMoves(0,1,3), 70, 30, 14, 26, true),//25
+        new Pokemon("Tentacool", "Water", fillMoves(0,1,3), 70, 30, 14, 26, false),//25
         new Pokemon("Tentacruel", "Water", fillMoves(0,1,3,4), 100, 45, 18, -1, true),//26
         
         //A couple mostly-normal Pokemon that I should've put at the start, small mistake on my part
