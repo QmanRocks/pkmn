@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 public class Game
 {
-    
     public static final Scanner console = new Scanner(System.in);
     public static Player player = new Player("Player", new ArrayList<Pokemon>(), new ArrayList<Item>());
     public static int route = 0;
@@ -79,16 +78,16 @@ public class Game
         //Fighting
         while(pl.isAwake() && op.isAwake())
         {
-            clearBattle(pl, op);
+            clearBattle(pl, op, t != null);
             System.out.println("What would you like to do?");
             System.out.println("(1)Move\n(2)Item\n(3)Switch\n(4)Flee");
             int choice = retryInput(1, 4);
             
-            clearBattle(pl, op);
+            clearBattle(pl, op, t != null);
             
             //Creating the choices outside the if-statement, therefore they can be used outside of it
             int moveChoice = -1;
-            int opIndex = -1;
+            int opIndex = (int)(Math.random() * op.getMoves().size());
             
             //if high enough level, it knows which move is best to use
             if(op.getLevel() >= 5)
@@ -123,13 +122,12 @@ public class Game
                     System.out.print("Error processing input, try again: ");
                     moveChoice = retryInput(0, pl.getMoves().size()-1)-1;
                 }
-                //wait(1000);
             }
             
             //Item
             if(choice == 2)
             {
-                clearBattle(pl, op);
+                clearBattle(pl, op, t != null);
                 if(p.getBackpack().size() == 0)
                 {
                     System.out.println("You have no items to use!");
@@ -147,7 +145,7 @@ public class Game
                     int iChoice = retryInput(1, count)-1;
 
                     Item i = p.getBackpack().get(iChoice);
-                    clearBattle(pl, op);
+                    clearBattle(pl, op, t != null);
                     if(i.getType() == 0 || i.getType() == 3)
                     {
                         //Potions
@@ -161,7 +159,7 @@ public class Game
                         }
                         int pChoice = retryInput(1, pCount)-1;
                         
-                        clearBattle(pl, op);
+                        clearBattle(pl, op, t != null);
                         i.use(p.getPokemon().get(pChoice));
                         p.removeItem(iChoice);
                     }
@@ -178,7 +176,7 @@ public class Game
                         }
                         int pChoice = retryInput(1, pCount)-1;
                         
-                        clearBattle(pl, op);
+                        clearBattle(pl, op, t != null);
                         i.use(p.getKOPokemon().get(pChoice));
                         p.revPokemon(p.getKOPokemon().get(pChoice));
                         p.removeItem(iChoice);
@@ -187,7 +185,7 @@ public class Game
                     else
                     {
                         //Pokeball
-                        clearBattle(pl, op);
+                        clearBattle(pl, op, t != null);
                         if(t != null)
                         {
                             System.out.println("You can't use a Pokeball\nin a Trainer Battle!");
@@ -218,7 +216,7 @@ public class Game
             //Switch
             if(choice == 3)
             {
-                clearBattle(pl, op);
+                clearBattle(pl, op, t != null);
                 if(p.getPokemon().size() <= 1)
                 {
                     System.out.println("You have no Pokemon to switch in!");
@@ -239,7 +237,10 @@ public class Game
                     }
                     int newChoice = retryInput(1, p.getPokemon().size(), curInd+1)-1;
                     
+                    System.out.println("Take a break, "+pl.getName()+"!");
                     pl = p.getPokemon().get(newChoice);
+                    wait(1000);
+                    System.out.println("Go, "+pl.getName()+"!");
                 }
                 wait(1000);
             }
@@ -326,7 +327,7 @@ public class Game
             }
             
             wait(1000);
-            clearBattle(pl, op);
+            clearBattle(pl, op, t != null);
             
             if(!pl.isAwake() && p.getPokemon().size() > 0)
             {
@@ -356,7 +357,6 @@ public class Game
         if(pl.isAwake())
         {
             System.out.println("You Won!");
-            //pl.addXP(op.getXPGive());
             wait(1000);
             
             if(t != null)
@@ -451,10 +451,15 @@ public class Game
      * @param p1 Pokemon, the Player's info
      * @param p2 Pokemon, the Opponent's info, either wild or trainer
      */
-    public static void clearBattle(Pokemon p1, Pokemon p2)
+    public static void clearBattle(Pokemon p1, Pokemon p2, boolean trainer)
     {
         System.out.print('\u000C');
-        System.out.println("You: "+p1 + "\nOpponent: " + p2);
+        System.out.println("You: "+p1);
+        if(trainer)
+            System.out.print("Opponent: ");
+        else
+            System.out.print("Wild Pokemon: ");
+        System.out.println(p2);
     }
     /**
      * clear: clears the screen
@@ -537,7 +542,8 @@ public class Game
         String yn = retryInput();
         if(yn.equals("Y"))
         {
-            System.out.print("Enter the new name for your "+p.getName()+": ");
+            System.out.println("Enter the new name for your "+p.getName()+": ");
+            System.out.println("CANNOT INCLUDE SPACES");
             String name = console.next();
             while(name.length() == 0)
             {
@@ -589,18 +595,18 @@ public class Game
             clear();
             System.out.println(player);
             System.out.println("Route "+(route+1));
-            System.out.println("What would you like to do now?");
-            System.out.println("1)Venture into the wild");
-            System.out.println("2)Buy items in the PokeMart");
-            System.out.println("3)Heal Pokemon at the Pokemon Center");
+            System.out.println("What would you like to do now?\n");
+            System.out.println("1)Venture into the wild\n");
+            System.out.println("2)Buy items in the PokeMart\n");
+            System.out.println("3)Heal Pokemon at the Pokemon Center\n");
             if(route == maxRoute)
-                System.out.println("4)Challenge the Gym Leader");
+                System.out.println("4)Challenge the Gym Leader\n");
             else
-                System.out.println("4)Go to next route");
-            System.out.println("5)Change Party Order");
-            System.out.println("6)Release a Pokemon back into the wild");
+                System.out.println("4)Go to next route\n");
+            System.out.println("5)Change Party Order\n");
+            System.out.println("6)Release a Pokemon back into the wild\n");
             if(route > 0)
-                System.out.println("7)Go back to previous route");
+                System.out.println("7)Go back to previous route\n");
             System.out.println("0)Quit");
             if(route > 0)
                 choice = retryInput(0,7);
@@ -615,6 +621,10 @@ public class Game
                 {
                     System.out.println("Goodbye!");
                     return;
+                }
+                else
+                {
+                    choice = -1;
                 }
             }
             if(choice == 1)
@@ -720,63 +730,22 @@ public class Game
             System.out.println("1) Potion: "+new Item(0).getDesc()+ " $5");
             System.out.println("2) Revive: "+new Item(1).getDesc()+ " $10");
             System.out.println("3) Pokeball: "+new Item(2).getDesc()+ " $5");
-            System.out.println("4) Super Potion: "+new Item(3).getDesc()+ " $10");
+            System.out.println("4) Super Potion: "+new Item(3).getDesc()+ " $15");
             System.out.println("0) Back");
             
             choice = retryInput(0,4);
-            if(choice == 1)
+            if(choice != 0)
             {
-                if(player.getMoney() >= 5)
+                Item toGive = new Item(choice-1);
+                if(player.getMoney() >= toGive.getCost())
                 {
-                    player.addItem(new Item(0));
-                    System.out.println("Bought a Potion!");
-                    player.spendMoney(5);
+                    player.spendMoney(toGive.getCost());
+                    player.addItem(toGive);
+                    System.out.println("Bought "+toGive.getName() + "!");
                 }
                 else
                 {
-                    System.out.println("Not enough money!");
-                }
-                wait(1000);
-            }
-            else if(choice == 4)
-            {
-                if(player.getMoney() >= 10)
-                {
-                    player.addItem(new Item(3));
-                    System.out.println("Bought a Super Potion!");
-                    player.spendMoney(10);
-                }
-                else
-                {
-                    System.out.println("Not enough money!");
-                }
-                wait(1000);
-            }
-            else if(choice == 2)
-            {
-                if(player.getMoney() >= 10)
-                {
-                    player.addItem(new Item(1));
-                    System.out.println("Bought a Revive!");
-                    player.spendMoney(10);
-                }
-                else
-                {
-                    System.out.println("Not enough money!");
-                }
-                wait(1000);
-            }
-            else if(choice == 3)
-            {
-                if(player.getMoney() >= 5)
-                {
-                    player.addItem(new Item(2));
-                    System.out.println("Bought a Pokeball!");
-                    player.spendMoney(5);
-                }
-                else
-                {
-                    System.out.println("Not enough money!");
+                    System.out.println("You don't have enough money!");
                 }
                 wait(1000);
             }

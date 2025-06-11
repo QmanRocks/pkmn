@@ -7,10 +7,7 @@
  */
 import java.util.ArrayList;
 public class Player extends Trainer
-{
-    //#FIX REVIVING DOESNT REMOVE ASLEEP BOOLEAN
-    
-    //private ArrayList<Pokemon> koPkmn = new ArrayList<Pokemon>();
+{    
     private ArrayList<Item> backpack = new ArrayList<Item>();
     private int money;
     

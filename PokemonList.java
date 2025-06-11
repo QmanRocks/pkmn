@@ -9,35 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 public class PokemonList
 {
-    private static Pokemon[] pkmn = {
-        //TODO
-        /*
-         * None!
-         */
-        
-        
-        //Done
-        /*
-         * Normal
-         * Fire
-         * Grass
-         * Water
-         * Fighting
-         * Flying
-         * Poison
-         * Electric
-         * Ground
-         * Psychic
-         * Rock
-         * Ice
-         * Bug
-         * Dragon
-         * Ghost
-         * Dark
-         * Steel
-         * Fairy
-         */
-        
+    private static Pokemon[] pkmn = {        
         //normals
         new Pokemon("Ratatta", "Normal", fillMoves(0,1), 72, 20, 10, 2, false),//0
         new Pokemon("Pidgey", "Flying", fillMoves(0,15), 56, 25, 12, 27, false),//1

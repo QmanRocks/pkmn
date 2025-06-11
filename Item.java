@@ -15,6 +15,7 @@ public class Item
                                     "Tries to capture a wild Pokemon.",
                                     "Heals up to 50 HP of the selected Pokemon."
                                     };
+    private final int[] prices = {5, 10, 5, 15};
     
     public Item(int i)
     {
@@ -84,5 +85,9 @@ public class Item
     public String getDesc()
     {
         return descs[type];
+    }
+    public int getCost()
+    {
+        return prices[type];
     }
 }

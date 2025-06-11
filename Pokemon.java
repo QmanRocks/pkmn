@@ -30,8 +30,6 @@ public class Pokemon
     public final static String[] steelValues = {"Fire0.5", "Water0.5", "Electric0.5", "Ice2", "Rock2", "Steel0.5", "Fairy2"};
     public final static String[] fairyValues = {"Fire0.5", "Fighting2", "Poison0.5", "Dragon2", "Dark2", "Steel0.5"};
     
-    //private final static int[] levels = {0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50};
-    
     private String name;
     private String type;
     private ArrayList<Move> moves;
@@ -61,22 +59,6 @@ public class Pokemon
         isEvo = is;
     }
     
-    // public Pokemon(String n, String t, ArrayList<Move> mv, double s, int hp, int xg, int ei, int lev, boolean is)
-    // {
-        // name = n;
-        // type = t;
-        // moves = mv;
-        // speed = s;
-        // hitPoints = hp + lev;
-        // xpGive = xg;
-        // evolveIndex = ei;
-        // awake = true;
-        // xp = 0;
-        // level = lev;
-        // maxHP = hp;
-        // isEvo = is;
-    // }
-    
     public Pokemon(Pokemon p)
     {
         name = new String(p.getName());
@@ -90,6 +72,7 @@ public class Pokemon
         hitPoints = p.getHP();
         xpGive = p.getXPGive();
         evolveIndex = p.getEvIndex();
+        isEvo = p.isEvolution();
         awake = true;
         xp = 0;
         level = p.getLevel();
@@ -109,6 +92,7 @@ public class Pokemon
         hitPoints = p.getHP() + l;
         xpGive = p.getXPGive() + (2*l);
         evolveIndex = p.getEvIndex();
+        isEvo = p.isEvolution();
         awake = true;
         xp = 0;
         level = l;
@@ -220,7 +204,7 @@ public class Pokemon
             
             if( evolveIndex > -1 )
             {
-                if((level >= 10 && !isEvo) || (level >= 20 && isEvo))
+                if((level >= 10 && (!isEvo)) || (level >= 20 && isEvo))
                 {
                     Game.evolve(this);
                     return;
@@ -234,7 +218,7 @@ public class Pokemon
         
         System.out.print(name + " gained ");
         if(lvUp)
-            System.out.print(xp + " extra ");
+            System.out.print(xp + " extra");
         else
             System.out.print(x);
         System.out.println(" XP");
@@ -276,7 +260,7 @@ public class Pokemon
                     factor = Double.parseDouble(t.substring(p.getType().length()));
                 }
             }
-            int damage = (int)((m.getDamage() * factor) + level);
+            int damage = (int)((m.getDamage() + level)* factor);
             p.hurt(damage);
             System.out.print(this.getName() + " used " + m.getName() + "! Did " + damage + " damage. ");
             if(factor > 1)
