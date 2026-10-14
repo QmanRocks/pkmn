@@ -453,7 +453,7 @@ public class Game
      */
     public static void clearBattle(Pokemon p1, Pokemon p2, boolean trainer)
     {
-        System.out.print('\u000C');
+        System.out.print("\033[H\033[2J");;
         System.out.println("You: "+p1);
         if(trainer)
             System.out.print("Opponent: ");
@@ -466,7 +466,7 @@ public class Game
      */
     public static void clear()
     {
-        System.out.print('\u000C');
+        System.out.print("\033[H\033[2J");;
     }
     
     /**
@@ -506,17 +506,17 @@ public class Game
             int choice = retryInput(1, 3);
             if(choice == 1)
             {
-                System.out.print('\u000C');
+                System.out.print("\033[H\033[2J");;
                 System.out.println("Bulbasaur, a Grass Pokemon.\nStrong against Water, Ground, and Rock");
             }
             if(choice == 2)
             {
-                System.out.print('\u000C');
+                System.out.print("\033[H\033[2J");;
                 System.out.println("Squirtle, a Water Pokemon.\nStrong against Fire, Ground, and Rock");
             }
             if(choice == 3)
             {
-                System.out.print('\u000C');
+                System.out.print("\033[H\033[2J");;
                 System.out.println("Charmander, a Fire Pokemon.\nStrong against Grass, Bug, Ice, and Steel");
             }
             System.out.println("Choose this Pokemon?\n(Y)/(N)");
